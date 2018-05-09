@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Table Finder</title>
+    <link href="jq-lab1-p2-styles.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700|Rubik:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h1>Table Finder</h1>
+      <p class="subhead">Pick your table now</p>
+
+        <div class="tables">
+
+        <div class="circle available" id=1><p>1</p></div>
+        <div class="circle available" id=2><p>2</p></div>
+        <div class="circle available" id=3><p>3</p></div>
+        <div class="circle available" id=4><p>4</p></div>
+        <div class="circle available" id=5><p>5</p></div>
+        <div class="circle available" id=6><p>6</p></div>
+        <div class="circle available" id=7><p>7</p></div>
+        <div class="circle available" id=8><p>8</p></div>
+        <div class="circle available" id=9><p>9</p></div>
+
+      </div>
+
+
+      <form>
+        <i class="material-icons">close</i>
+        <h4>New Reservation</h4>
+        <p>Table Number:</p>
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="phone" placeholder="Phone">
+        <input type="text" id="partySize" placeholder="Party Size">
+        <button type="button">SAVE</button>
+      </form>
+
+      <div class="resInfo">
+        <!-- <p>Name: neo</p>
+        <p>Party Size: 4</p> -->
+        <!--Empty div that we will populate with reservation info  -->
+      </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="jq-lab1-p2-script.js"></script>
+  </body>
+</html>
