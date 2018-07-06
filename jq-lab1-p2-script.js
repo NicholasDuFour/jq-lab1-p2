@@ -1,39 +1,33 @@
 "use strict";
-$("document").ready(()=>{
-//Hides the form upon initial load;
-  $("form").hide();
-
-const resList = [{}];
-
+$(document).ready(()=>{
+//Declare reservation list and currentTable as variables
+const resList = [];
+let currentTable;
+let name;
+let partyNum;
 
 // Event listener for clicking on tables
-  $(".circle").on("click", (event) => {
+  $(document).on("click", ".available", (event) => {
     $(event.target).addClass("currentCircle");
+    currentTable = $(event.target);
+    $(".tablenum").text(`Table Number: ${currentTable.text()}`)
+    $("form").css("display", "flex");
     $("form").fadeIn(400);
-    // console.log("check?");
   });
   // User clicks save button, form fades out, current circle gets reserved
   $("button").on("click", (event) => {
-    $("form").fadeOut(400)
-    $(".currentCircle").toggleClass("reserved currentCircle")
-    $("currentCircle").attr("status", "reserved");
-    resList.push({
-      Name:$("#name").val(),
-      Phone:$("#phone").val(),
-      PartySize:$("#partySize").val(),
-      // Status:$(status).val()
-      });
-      $(".resInfo").append("#name").val().text;
-      $(".resInfo").append("#partySize").val().text;
-      $("#name").val(""),
-      $("#phone").val(""),
-      $("#partySize").val(""),
-      console.log(resList);
-  })
+    name = $("#name").val();
+    partyNum = $("#partySize").val();
+    $(".currentCircle").attr("name", name);
+    $(".currentCircle").attr("partySize", partyNum);
+    $(".currentCircle").addClass("reserved").removeClass("available currentCircle");
+    $("form").fadeOut(400);
+    //The form fades out, the values get reset
+      $("#name").val("");
+      $("#phone").val("");
+      $("#partySize").val("");
 
-  // if ($("p").hasClass("reserved")) {
-  //   $(".circle").addClass("reserved");
-  // }
+  })
 
 // User clicks X on the form, it fades out & loses currentCircle class
     $(".material-icons").click(function () {
@@ -42,9 +36,19 @@ const resList = [{}];
     })
 
 // Hover function for reserved table
-      // $(".reserved").on("mouseenter", (event) => {
-      //   $(".resInfo").show();
-      // });
-
+       $(document).on("mouseenter", ".reserved", (event) => {
+         currentTable = $(event.target);
+         name = $(event.target).attr("name");
+         partyNum = $(event.target).attr("partySize");
+         $(".resInfo").html(`
+           <p>Name: ${name}</p>
+           <p>Party Size: ${partyNum}</p>
+           `)
+         $(".resInfo").show();
+         $(currentTable).append($(".resInfo"));
+      })
+      .on("mouseleave", ".reserved", (e) =>{
+        $(".resInfo").hide();
+      })
 
 }); /*End of document ready*/
